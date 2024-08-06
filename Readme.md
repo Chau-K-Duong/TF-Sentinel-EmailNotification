@@ -24,7 +24,7 @@ The alternative is to run **az login** on your choice of terminal to ensure you 
 
 If desired, change any other variable names to required or desired naming stadards using the **variables.tf** file. (***THIS IS HIGHLY RECOMENDED***)
 
-Once comeplete, run terraform apply via pipeline or manually through the terminal.
+Once complete, run terraform apply via pipeline or manually through the terminal.
 
 ### Phase 3
 
