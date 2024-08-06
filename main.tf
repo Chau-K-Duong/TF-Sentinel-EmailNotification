@@ -2,7 +2,6 @@
 resource "azurerm_resource_provider_registration" "SecurityInsights" {
   name = "Microsoft.SecurityInsights"
 }
-data "azurerm_subscription" "current" {}
 #Creating resource group for Sentinel
 resource "azurerm_resource_group" "mainrg" {
   name     = var.sentinel-rg-name
