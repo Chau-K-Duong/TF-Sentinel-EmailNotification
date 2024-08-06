@@ -20,7 +20,7 @@ variable "email-api-connection-name" {
 }
 variable "api-connection-display-name" {
   type = string
-  default = "Sentinel-learn-api-connection"
+  default = "Sentinel-api-connection"
 }
 variable "notify-playbook-name" {
   type = string
