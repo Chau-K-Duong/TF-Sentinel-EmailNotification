@@ -1,10 +1,8 @@
 # Microsoft Sentinel IaC
 
-[![Azure Sentinel](./media/Microsoft-Azure-sentinel.jpg "Azure Sentinel")](https://azure.microsoft.com/en-us/products/microsoft-sentinel/)
-
-[![Applied Information Sciences](./media/AIS-Logo.png "AIS")](https://www.ais.com/)
-
-[![Hashicorp Terraform](./media/terraform.jpg "Terraform")](https://terraform.io)
+|       |       |       |
+|  ---  |  ---  |  ---  |
+|  [![Azure Sentinel](./media/Microsoft-Azure-sentinel.jpg "Azure Sentinel")](https://azure.microsoft.com/en-us/products/microsoft-sentinel/)     |  [![Applied Information Sciences](./media/AIS-Logo.png "AIS")](https://www.ais.com/)     |  [![Hashicorp Terraform](./media/terraform.jpg "Terraform")](https://terraform.io)     |
 
 ## Purpose
 
@@ -22,7 +20,7 @@ The alternative is to run **az login** on your choice of terminal to ensure you 
 
 ***REQUIRED*** Change the **email-to** variable within the **variables.tf** file to a valid email address.
 
-If desired, change any other variable names to required or desired naming stadards using the **variables.tf** file. (***THIS IS HIGHLY RECOMENDED***)
+If desired, change any other variable names to required or desired naming standards using the **variables.tf** file. (***THIS IS HIGHLY RECOMMENDED***)
 
 Once complete, run **terraform apply** via pipeline or manually through the terminal.
 
@@ -42,7 +40,7 @@ In the Search bar, search for API Connections and click on the respective API co
 
 ![Edit API Connection](./media/edit%20api%20connection.png "edit API Connection")
 
-![Sentinel Authroize and Save](./media/Authorize.png "Sentinel Authorize and Save")
+![Sentinel Authorize and Save](./media/Authorize.png "Sentinel Authorize and Save")
 
 ### Phase 4
 
@@ -54,4 +52,4 @@ In the Search bar, search for API Connections and click on the respective API co
 
 ![Edit API Connection](./media/edit%20api%20connection.png "edit API Connection")
 
-![Office365 Authroize and Save](./media/o365%20authorize%20and%20save.png "Office365 Authorize and Save")
+![Office365 Authorize and Save](./media/o365%20authorize%20and%20save.png "Office365 Authorize and Save")

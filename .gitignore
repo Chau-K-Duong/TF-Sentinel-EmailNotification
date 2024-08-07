@@ -1,0 +1,22 @@
+.DS_Store
+.decrypted~vault.sops.yaml
+.~lock**
+# Local .terraform directories
+.terraform
+# terragrunt cache
+.terragrunt-cache
+# .tfstate files
+*.tfstate
+*.tfstate.*
+# plan files
+*.tfp
+# Ignore override files as they are usually used to override resources locally and so
+# are not checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+# Include override files for terragrunt exception
+!**/provider*_override.tf
+# work in progress
+**.wip

@@ -5,13 +5,26 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "3.113.0"
     }
+    # tfe = {
+    #   source  = "hashicorp/tfe"
+    #   version = "0.46.0"
+    # }
   }
   backend "local" {
     #path = {}
-   }
+  }
+  #   backend "remote" {
+  #   hostname     = "app.terraform.io"
+  #   organization = "closeknit"
+  #   workspaces {
+  #     name = "sentinel-email-notification"
+  #   }
+  # }
 }
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   skip_provider_registration = true # This is only required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers.
   features {}
+  # tenant_id       = ""
+  # subscription_id = ""
 }
