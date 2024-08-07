@@ -61,7 +61,7 @@ resource "azurerm_logic_app_workflow" "EmailNotify" {
   name                = var.notify-playbook-name
   location            = azurerm_resource_group.mainrg.location
   resource_group_name = azurerm_resource_group.mainrg.name
-  enabled = "true"
+  enabled             = "true"
   parameters = {
     "$connections" = jsonencode(
       {
@@ -82,7 +82,7 @@ resource "azurerm_logic_app_workflow" "EmailNotify" {
     "$connections" = jsonencode(
       {
         defaultValue = {}
-        type = "Object"
+        type         = "Object"
       }
     )
   }
@@ -122,9 +122,9 @@ resource "azurerm_logic_app_action_custom" "emailnotifyaction" {
         },
         method = "post",
         body = {
-          To = var.email-to,
-          Subject = var.email-subject,
-          Body = var.email-body,
+          To         = var.email-to,
+          Subject    = var.email-subject,
+          Body       = var.email-body,
           Importance = "High"
         },
         path = "/v2/Mail"
@@ -146,13 +146,13 @@ resource "azurerm_role_assignment" "sentinelautomationpermissions" {
 }
 #Create Sentinel Automation Rule that leverages the playbook
 resource "azurerm_sentinel_automation_rule" "emailnotifyrule" {
-  name                       = uuid()
+  name                       = uuidv5("x500", "CN=SentinelAutomationRule,ST=MD,O=CloseKnit,OU=ArchSecurity,C=US")
   log_analytics_workspace_id = azurerm_sentinel_log_analytics_workspace_onboarding.lawonboarding.workspace_id
   display_name               = "Email on Incident Creation"
   order                      = 1
-  triggers_on = "Incidents"
+  triggers_on                = "Incidents"
   action_playbook {
     logic_app_id = azurerm_logic_app_workflow.EmailNotify.id
-    order = 1
+    order        = 1
   }
 }
