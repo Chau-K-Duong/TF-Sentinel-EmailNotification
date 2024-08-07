@@ -28,9 +28,9 @@ Once complete, run **terraform apply** via pipeline or manually through the term
 
 Logon to the Azure portal:
 
-[Commercial Azure](https://www.portal.azure.com)
+[Commercial Azure](https://portal.azure.com)
 
-[Government Azure](https://www.portal.azure.us)
+[Government Azure](https://portal.azure.us)
 
 In the Search bar, search for API Connections and click on the respective API connection (default = "Sentinel-API-Connection"). Then click on **Edit API Connection** then click **Authorize** then **Save**.
 
