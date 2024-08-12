@@ -20,7 +20,7 @@ variable "sentinel-api-connection-name" {
 }
 variable "api-connection-display-name" {
   type        = string
-  default     = "Sentinel-api-connection"
+  default     = "Sentinel-API-Connection"
   description = "API connection display name"
 }
 variable "notify-playbook-name" {
