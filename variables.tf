@@ -40,6 +40,6 @@ variable "playbook-trigger" {
 }
 variable "uuidnamespace" {
   type        = string
-  default     = "CN=SentinelAutomationRule,ST=MO,O=Organization,OU=OrganizationalUnit,C=US"
+  default     = "CN=SentinelAutomationRule,C=US"
   description = "namespace to generate a uuid"
 }
