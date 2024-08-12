@@ -34,10 +34,6 @@ data "azurerm_managed_api" "smapi" {
   name     = "azuresentinel"
   location = azurerm_resource_group.mainrg.location
 }
-/*data "azurerm_managed_api" "emapi" {
-  name     = "office365"
-  location = azurerm_resource_group.mainrg.location
-}*/
 #Create the API for Sentinel Trigger
 resource "azurerm_api_connection" "sapiconnection" {
   name                = var.sentinel-api-connection-name
@@ -45,13 +41,6 @@ resource "azurerm_api_connection" "sapiconnection" {
   managed_api_id      = data.azurerm_managed_api.smapi.id
   display_name        = var.sentinel-api-connection-name
 }
-/*#Create the API for Email Notification Action
-resource "azurerm_api_connection" "eapiconnection" {
-  name                = var.email-api-connection-name
-  resource_group_name = azurerm_resource_group.mainrg.name
-  managed_api_id      = data.azurerm_managed_api.emapi.id
-  display_name        = var.email-api-connection-name
-}*/
 #Create Automation Playbook
 resource "azurerm_logic_app_workflow" "EmailNotify" {
   name                = var.notify-playbook-name
