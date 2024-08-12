@@ -18,7 +18,14 @@ The alternative is to run **az login** on your choice of terminal to ensure you 
 
 ### Phase 2
 
-***REQUIRED*** Change the **email-to** variable within the **variables.tf** file to a valid email address.
+***REQUIRED*** Change the following variables to allow the LogApp to be properly created on the emailnotify.json file:
+
+1. URIFORAPICALL
+2. TOKENINFO
+3. DistributionGroup@emaildomain(.)tld
+4. Org No Reply <noreply@clientorg(.)tld>
+5. noreply@clientorg(.)tld
+6. (Client Organization)
 
 If desired, change any other variable names to required or desired naming standards using the **variables.tf** file. (***THIS IS HIGHLY RECOMMENDED***)
 
@@ -41,15 +48,3 @@ In the Search bar, search for API Connections and click on the respective API co
 ![Edit API Connection](./media/edit%20api%20connection.png "edit API Connection")
 
 ![Sentinel Authorize and Save](./media/Authorize.png "Sentinel Authorize and Save")
-
-### Phase 4
-
-In the Search bar, search for API Connections and click on the respective API connection (default = "Office365-API-Connection). Then click on **Edit API Connection** then click **Authorize** then **Save**.
-
-![API Connection Search](./media/API%20Connections%20search.png "API Connection Search")
-
-![Office365 API Connection](./media/office365%20api%20connection.png "Office365 API Connection")
-
-![Edit API Connection](./media/edit%20api%20connection.png "edit API Connection")
-
-![Office365 Authorize and Save](./media/o365%20authorize%20and%20save.png "Office365 Authorize and Save")

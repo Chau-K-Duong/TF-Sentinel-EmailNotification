@@ -38,23 +38,8 @@ variable "playbook-trigger" {
   default     = "trigger-on-sentinel-incident"
   description = "playbook trigger name"
 }
-variable "email-to" {
+variable "uuidnamespace" {
   type        = string
-  default     = "PreferredDistroGroup@email.tld"
-  description = "distribution group email address"
-}
-variable "email-subject" {
-  type        = string
-  default     = "Microsoft Sentinel Notification System"
-  description = "email subject"
-}
-variable "email-body" {
-  type        = string
-  default     = "<p class=\"editor-paragraph\">Good day,</p><p class=\"editor-paragraph\"></p><br><p class=\"editor-paragraph\">Please review &lt;AzureTenant&gt; for new alerts.</p><p class=\"editor-paragraph\"></p><br><p class=\"editor-paragraph\">Sincerely,</p><p class=\"editor-paragraph\"></p><br><p class=\"editor-paragraph\">Microsoft Sentinel</p>"
-  description = "email body"
-}
-variable "email-importance" {
-  type        = string
-  default     = "High"
-  description = "email importance flag"
+  default     = "CN=SentinelAutomationRule,ST=MO,O=Organization,OU=OrganizationalUnit,C=US"
+  description = "namespace to generate a uuid"
 }

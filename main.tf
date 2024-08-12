@@ -1,7 +1,3 @@
-#Register the SecurityInsight Resource provider to the subscription
-resource "azurerm_resource_provider_registration" "SecurityInsights" {
-  name = "Microsoft.SecurityInsights"
-}
 #Creating resource group for Sentinel
 resource "azurerm_resource_group" "mainrg" {
   name     = var.sentinel-rg-name
@@ -38,10 +34,10 @@ data "azurerm_managed_api" "smapi" {
   name     = "azuresentinel"
   location = azurerm_resource_group.mainrg.location
 }
-data "azurerm_managed_api" "emapi" {
+/*data "azurerm_managed_api" "emapi" {
   name     = "office365"
   location = azurerm_resource_group.mainrg.location
-}
+}*/
 #Create the API for Sentinel Trigger
 resource "azurerm_api_connection" "sapiconnection" {
   name                = var.sentinel-api-connection-name
@@ -49,19 +45,19 @@ resource "azurerm_api_connection" "sapiconnection" {
   managed_api_id      = data.azurerm_managed_api.smapi.id
   display_name        = var.sentinel-api-connection-name
 }
-#Create the API for Email Notification Action
+/*#Create the API for Email Notification Action
 resource "azurerm_api_connection" "eapiconnection" {
   name                = var.email-api-connection-name
   resource_group_name = azurerm_resource_group.mainrg.name
   managed_api_id      = data.azurerm_managed_api.emapi.id
   display_name        = var.email-api-connection-name
-}
+}*/
 #Create Automation Playbook
 resource "azurerm_logic_app_workflow" "EmailNotify" {
   name                = var.notify-playbook-name
   location            = azurerm_resource_group.mainrg.location
   resource_group_name = azurerm_resource_group.mainrg.name
-  enabled             = "true"
+  enabled = "true"
   parameters = {
     "$connections" = jsonencode(
       {
@@ -82,7 +78,7 @@ resource "azurerm_logic_app_workflow" "EmailNotify" {
     "$connections" = jsonencode(
       {
         defaultValue = {}
-        type         = "Object"
+        type = "Object"
       }
     )
   }
@@ -110,29 +106,7 @@ resource "azurerm_logic_app_trigger_custom" "msitrigger" {
 resource "azurerm_logic_app_action_custom" "emailnotifyaction" {
   name         = "Send_an_email_(V2)"
   logic_app_id = azurerm_logic_app_workflow.EmailNotify.id
-
-  body = jsonencode(
-    {
-      type = "ApiConnectionWebhook",
-      inputs = {
-        host = {
-          connection = {
-            referenceName = data.azurerm_managed_api.emapi.name
-          }
-        },
-        method = "post",
-        body = {
-          To         = var.email-to,
-          Subject    = var.email-subject,
-          Body       = var.email-body,
-          Importance = "High"
-        },
-        path = "/v2/Mail"
-      },
-      runAfter = {}
-    }
-  )
-
+  body         = file("${path.module}/emailnotify.json")
 }
 #Get Service Prinicpal attributes
 data "azuread_service_principal" "AzureSecurityInsights" {
@@ -146,13 +120,13 @@ resource "azurerm_role_assignment" "sentinelautomationpermissions" {
 }
 #Create Sentinel Automation Rule that leverages the playbook
 resource "azurerm_sentinel_automation_rule" "emailnotifyrule" {
-  name                       = uuidv5("x500", "CN=SentinelAutomationRule,ST=MD,O=CloseKnit,OU=ArchSecurity,C=US")
+  name                       = uuidv5("x500", var.uuidnamespace)
   log_analytics_workspace_id = azurerm_sentinel_log_analytics_workspace_onboarding.lawonboarding.workspace_id
   display_name               = "Email on Incident Creation"
   order                      = 1
-  triggers_on                = "Incidents"
+  triggers_on = "Incidents"
   action_playbook {
     logic_app_id = azurerm_logic_app_workflow.EmailNotify.id
-    order        = 1
+    order = 1
   }
 }

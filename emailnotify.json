@@ -1,0 +1,28 @@
+{
+    "type": "Http",
+    "inputs": {
+        "uri": "URIFORAPICALL",
+        "method": "POST",
+        "headers": {
+            "Authorization": "TOKENINFO",
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "data": {
+                "message": {
+                    "recipients": [
+                        "DistributionGroup@emaildomain(.)tld"
+                    ],
+                    "headers": {
+                        "subject": "Microsoft Sentinel Notification System",
+                        "from": "Org No Reply <noreply@clientorg(.)tld>",
+                        "reply-to": "noreply@clientorg(.)tld"
+                    },
+                    "content": {
+                        "text/html": "<html><body>Good day,<br><br>Please review (Client Organization) for new alerts.<br><br>Sincerely,<br><br>Microsoft Sentinel</body></html>"
+                    }
+                }
+            }
+        }
+    }
+}
