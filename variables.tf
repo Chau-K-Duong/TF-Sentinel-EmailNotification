@@ -15,13 +15,8 @@ variable "sentinel-law-name" {
 }
 variable "sentinel-api-connection-name" {
   type        = string
-  default     = "Sentinel-API-Connection"
+  default     = "Sentinel-API-Connection
   description = "API connection name"
-}
-variable "email-api-connection-name" {
-  type        = string
-  default     = "Office365-API-Connection"
-  description = "email API connection name"
 }
 variable "api-connection-display-name" {
   type        = string
